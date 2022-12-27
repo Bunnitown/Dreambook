@@ -40,6 +40,38 @@ const Main = ({ navigation }) => {
     return day + '/' + month + '/' + year;
   };
 
+  const renderPicture = (url) => {
+    let connection = true;
+    if (!url || url.trim().length <= 0) connection = false;
+    else
+      fetch(url)
+        .then((response) => {
+          if (response.status == 404) connection = false;
+        })
+        .catch((e) => {
+          console.error('ERRO: ' + e);
+          connection = false;
+        });
+
+    return (
+      <View style={styles.image}>
+        <Image
+          source={
+            connection ? { uri: url } : require('../assets/disconnected.png')
+          }
+          style={[
+            styles.image,
+            {
+              width: '100%',
+              aspectRatio: 1,
+              height: undefined,
+            },
+          ]}
+        />
+      </View>
+    );
+  };
+
   return (
     <View
       style={{
@@ -166,11 +198,7 @@ const Main = ({ navigation }) => {
                     styles.container,
                     { marginTop: global.screen_width / 60 },
                   ]}>
-                  <Image
-                    source={{ uri: item.picture }}
-                    resizeMode={'contain'}
-                    style={styles.image}
-                  />
+                  {renderPicture(item.picture)}
                   <View style={{ flex: 1 }}>
                     <View
                       style={{

@@ -32,8 +32,10 @@ const Form = ({ navigation }) => {
       const data = await response.json();
       const url = data.url;
 
-      setData({ url: url, picture: { uri: url } });
+      if (url) setData({ url: url, picture: { uri: url } });
+      else setData({ url: '', picture: require('../assets/disconnected.png') });
     } catch (e) {
+      setData({ url: '', picture: require('../assets/disconnected.png') });
       console.error('ERRO: ' + e);
     }
   };
@@ -51,7 +53,8 @@ const Form = ({ navigation }) => {
           setWhen(new Date(item.when));
           setSharpness(item.sharpness);
           setDream(item.dream);
-          setData({ url: item.picture, picture: { uri: item.picture } });
+          if (!item.picture || item.picture.trim().length <= 0) randomPicture();
+          else setData({ url: item.picture, picture: { uri: item.picture } });
         }
       });
     } else randomPicture();
@@ -147,6 +150,7 @@ const Form = ({ navigation }) => {
           onPress={randomPicture}
           style={{
             flex: 0,
+            flexWrap: 'wrap',
             backgroundColor: 'white',
             width: global.screen_width / 4,
             height: global.screen_width / 4,
@@ -154,10 +158,11 @@ const Form = ({ navigation }) => {
               Math.round(global.screen_width + global.screen_height) / 2,
           }}>
           <Image
-            resizeMode={'contain'}
             source={picture}
             style={{
-              flex: 1,
+              width: '100%',
+              aspectRatio: 1,
+              height: undefined,
               borderRadius:
                 Math.round(global.screen_width + global.screen_height) / 2,
             }}
@@ -185,7 +190,7 @@ const Form = ({ navigation }) => {
               value={name}
               maxLength={60}
               onChangeText={setName}
-              placeholder="Nome do sonho."
+              placeholder="Nomeie o sonho neste campo."
               style={{
                 flex: 1,
                 color: global.header_background,
@@ -254,7 +259,7 @@ const Form = ({ navigation }) => {
         value={dream}
         multiline={true}
         onChangeText={setDream}
-        placeholder="Descreva seu sonho."
+        placeholder="Descreva o sonho neste campo."
         style={[
           styles.input,
           {
