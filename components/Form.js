@@ -4,6 +4,7 @@ import * as SecureStore from 'expo-secure-store';
 import { Icon } from 'react-native-elements';
 import { useState, useEffect } from 'react';
 import * as Speech from 'expo-speech';
+import '../Globals.js';
 import {
   TouchableOpacity,
   StyleSheet,

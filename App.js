@@ -1,37 +1,10 @@
 // Importando bibliotecas.
+import { TouchableOpacity, Linking, Alert, View } from 'react-native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
 import { StackActions } from '@react-navigation/native';
 import { Icon } from 'react-native-elements';
-import {
-  TouchableOpacity,
-  Dimensions,
-  Linking,
-  Alert,
-  View,
-} from 'react-native';
-
-// Definindo variáveis globais.
-global.header_title = 'Dreambook';
-global.header_color = '#ffffff';
-global.header_background = '#192131';
-global.screen_width = Dimensions.get('screen').width;
-global.screen_height = Dimensions.get('screen').height;
-global.selected_id = -1;
-global.months = [
-  'jan',
-  'fev',
-  'mar',
-  'abr',
-  'mai',
-  'jun',
-  'jul',
-  'ago',
-  'set',
-  'out',
-  'nov',
-  'dez',
-];
+import './Globals.js';
 
 // Importando componentes.
 import Main from './components/Main';

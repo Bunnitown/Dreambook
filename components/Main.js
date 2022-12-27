@@ -3,6 +3,7 @@ import { StackActions } from '@react-navigation/native';
 import * as SecureStore from 'expo-secure-store';
 import { Icon } from 'react-native-elements';
 import { useState, useEffect } from 'react';
+import '../Globals.js';
 import {
   TouchableOpacity,
   ScrollView,
