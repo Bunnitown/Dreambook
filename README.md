@@ -9,10 +9,10 @@ Para a instalação do sistema, consulte o diretório:
 
 Logo em seguida, baixe o arquivo nomeado como:
 	
-	download_apk/Dreambook.apk
+	application/Dreambook.apk
 
 Posteriormente, instale o aplicativo, abrindo-o pelo celular.
 
 ## Observações do desenvolvimento
 
-Para o desenvolvimento do aplicativo e código fonte, foi utilizado a plataforma 2022 Expo (Dev e Go) e EAS.
+Para o desenvolvimento do aplicativo e código fonte, foi utilizado a plataforma 2022 Expo (Dev e Go).
